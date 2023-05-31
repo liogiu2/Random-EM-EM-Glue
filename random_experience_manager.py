@@ -103,7 +103,7 @@ class ExperienceManager:
         for item in self.encounters_received['encounters']:
             self.encounter_initialization(item)
         print("Starting normal communication...")
-        print("Press something to start the action builder...")
+        print("Random Experience Manager started")
         thread = None
         # debugpy.listen(5678)
         while True:
@@ -147,7 +147,7 @@ class ExperienceManager:
         This method is used to get the most suited encounter based on the player model.
         """
         # debugpy.breakpoint()
-        return available_encouters[random.randint(0, len(available_encouters) - 1)]
+        return available_encouters[0]
 
     def flag_other_encouters(self, available_encounters: list[Encounter], encounter_to_skip: Encounter):
         """
@@ -170,8 +170,7 @@ class ExperienceManager:
         """
         for item in changed_relations:
             if len(item) > 0 and item[0] == 'update_player_model':
-                print("Updating player model." + str(item[1]))
-                self.update_player_model(item[1])
+                print("Player model ignored")
             else:
                 for rel in item:
                     if rel[0] == 'new':
